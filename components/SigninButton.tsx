@@ -11,13 +11,7 @@ const SigninButton = () => {
         return (
             <div className="flex items-center gap-4 ml-auto">
                 <p className="text-gray-700 text-sm">{session.user.name}</p>
-                <Image src={session.user.image || ''} alt={""} height={100} width={100} />
-                <button
-                    onClick={() => signOut()}
-                    className="text-red-600 border border-red-600 rounded-md py-2 px-4 transition duration-300 hover:bg-red-600 hover:text-white"
-                >
-                    Sign Out
-                </button>
+                <Image src={session.user.image || ''} alt={""} height={50} width={50} className="rounded-full" />
             </div>
         );
     }
