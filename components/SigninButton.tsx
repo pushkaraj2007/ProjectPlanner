@@ -10,7 +10,6 @@ const SigninButton = () => {
     if (session && session.user) {
         return (
             <div className="flex items-center gap-4 ml-auto">
-                <p className="text-gray-700 text-sm">{session.user.name}</p>
                 <Image src={session.user.image || ''} alt={""} height={50} width={50} className="rounded-full" />
             </div>
         );
