@@ -1,14 +1,12 @@
 import Head from 'next/head';
 import Link from 'next/link';
-import Features2 from '@/components/Home/Features2';
-import Footer from '@/components/Footer';
 import Image from 'next/image';
 import { FiArrowRight } from 'react-icons/fi'
 
 export default function Home() {
     return (
-        <section className='bg-gradient-to-b from-gray-100 to-gray-200 body-font h-[100vh] w-full'>
-            <div className='flex items-center justify-around pt-36 pb-16'>
+        <section className='body-font lg:h-[100vh] w-full'>
+            <div className='flex items-center justify-around pt-36 pb-16 flex-wrap lg:flex-nowrap'>
                 <div className='flex flex-wrap flex-col items-center text-center'>
                     <h1 className='text-3xl md:text-5xl mb-2 dark:text-gray-200 text-gray-900 font-bold'>
                         <p className='mb-3'>Discover Your <span className='text-blue-600'>Dream Project.</span></p>
@@ -28,7 +26,7 @@ export default function Home() {
                 </div>
 
                 <div>
-                    <Image src={'/man-coding.svg'} height={600} width={600} alt='Man coding' />
+                    <Image src={'/man-coding.svg'} height={600} width={600} alt='Man coding' className='mt-7 lg:mt-0' />
                 </div>
 
             </div>
