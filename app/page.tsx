@@ -20,16 +20,18 @@ export default function Home() {
                         className="flex items-center mt-8 mx-auto bg-blue-700 text-white px-8 py-4 text-xl md:text-2xl font-semibold rounded-full shadow-lg hover:bg-opacity-95 transition-all duration-300 hover:scale-95 transform"
                     >
                         Get Started
-                        <FiArrowRight className='ml-2' />
-                    </button>
-
-                </div>
-
-                <div>
-                    <Image src={'/man-coding.svg'} height={600} width={600} alt='Man coding' className='mt-7 lg:mt-0' />
-                </div>
+                        <span className="ml-1"> {/* Wrap the SVG in a separate span */}
+                            <FiArrowRight />
+                        </span>
+                </button>
 
             </div>
-        </section>
+
+            <div>
+                <Image src={'/man-coding.svg'} height={600} width={600} alt='Man coding' className='mt-7 lg:mt-0' />
+            </div>
+
+        </div>
+        </section >
     );
 }
