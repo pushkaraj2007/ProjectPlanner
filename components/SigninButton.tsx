@@ -10,7 +10,7 @@ const SigninButton = () => {
     if (session && session.user) {
         return (
             <div className="flex items-center gap-4 ml-auto">
-                <Image src={session.user.image || ''} alt={""} height={50} width={50} className="rounded-full" />
+                <button onClick={()=> signOut()}>Signout</button>
             </div>
         );
     }
