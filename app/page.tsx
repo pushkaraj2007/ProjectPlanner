@@ -5,7 +5,7 @@ import { FiArrowRight } from 'react-icons/fi'
 
 export default function Home() {
     return (
-        <section className='body-font lg:h-[100vh] w-full'>
+        <section className='body-font min-h-screen w-full'>
             <div className='flex items-center justify-around pt-36 pb-16 flex-wrap lg:flex-nowrap'>
                 <div className='flex flex-wrap flex-col items-center text-center'>
                     <h1 className='text-3xl md:text-5xl mb-2 dark:text-gray-200 text-gray-900 font-bold'>
