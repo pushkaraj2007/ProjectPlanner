@@ -9,7 +9,7 @@ export default function Home() {
         <section className='body-font min-h-screen w-full'>
             <div className='flex items-center flex-col justify-center pt-40 pb-16 flex-wrap lg:flex-nowrap'>
                 <div className='flex flex-wrap flex-col items-center text-center'>
-                    <h1 className='flex items-center text-3xl md:text-6xl mb-2 dark:text-gray-200 text-gray-900 font-bold'>
+                    <h1 className='flex items-center text-3xl md:text-6xl mb-2 text-gray-900 font-bold'>
                         <p className='mb-3'>Discover Your</p> &nbsp;
                         <TextEffect Text='Dream Project' />
                     </h1>
