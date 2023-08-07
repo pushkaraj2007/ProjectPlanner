@@ -1,5 +1,6 @@
 import React from 'react'
-import {BsPlusCircle} from 'react-icons/bs'
+import { BsPlusCircle } from 'react-icons/bs'
+import Link from 'next/link'
 
 const Dashboard = () => {
 
@@ -10,23 +11,22 @@ const Dashboard = () => {
             </div>
 
             <div className='flex flex-wrap justify-center mt-12'>
-                <div className=' w-[400px] k p-4 hover:transform hover:-translate-y-1 transition duration-500 cursor-pointer'>
-                    <div className='flex h-[300px] flex-col items-center justify-center border dark:border-gray-600 border-gray-300 p-6 rounded-lg transition duration-500'>
-                        <div className='inline-flex items-center justify-center rounded-full mb-5'>
-                            <BsPlusCircle size={30} />
+                <div className='w-[400px] k p-4'>
+                    <Link href={'/create-new'}>
+                        <div className='flex h-[300px] flex-col items-center justify-center border dark:border-gray-600 border-gray-300 p-6 rounded-lg duration-500 hover:transform hover:-translate-y-1 transition cursor-pointer'>
+                            <div className='inline-flex items-center justify-center rounded-full mb-5'>
+                                <BsPlusCircle size={30} />
+                            </div>
+                            <h2 className='text-lg dark:text-gray-300 text-gray-900 font-medium title-font mb-2'>
+                                Create New
+                            </h2>
                         </div>
-                        <h2 className='text-lg dark:text-gray-300 text-gray-900 font-medium title-font mb-2'>
-                            Create New
-                        </h2>
-                    </div>
+                    </Link>
                 </div>
                 <div className=' w-[400px] k p-4 hover:transform hover:-translate-y-1 transition duration-500 cursor-pointer'>
                     <div className='flex h-[300px] flex-col items-center justify-center border dark:border-gray-600 border-gray-300 p-6 rounded-lg transition duration-500'>
-                        <div className='inline-flex items-center justify-center rounded-full mb-5'>
-                            <BsPlusCircle size={30} />
-                        </div>
-                        <h2 className='text-lg dark:text-gray-300 text-gray-900 font-medium title-font mb-2'>
-                            Create New
+                        <h2 className='text-2xl dark:text-gray-300 text-center text-gray-900 font-medium title-font mb-2'>
+                            JavaScript
                         </h2>
                     </div>
                 </div>
