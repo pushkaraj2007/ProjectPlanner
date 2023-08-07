@@ -41,7 +41,7 @@ const TextEffect = ({ Text }: TextEffectProps) => {
                 <span
                     id="before-te1"
                     className="absolute top-0 left-0.5 w-full h-full bg-transparent"
-                    style={{ textShadow: '-2px 0 #49FC00', clipPath: 'rect(24px, 550px, 90px, 0)' }}
+                    style={{ textShadow: '-2px 0 rgb(2 49 130)', clipPath: 'rect(24px, 550px, 90px, 0)' }}
                     aria-hidden="true"
                 >
                     {Text}
