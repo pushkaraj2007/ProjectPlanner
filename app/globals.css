@@ -1,3 +1,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* CSS transitions */
+.transition-transform {
+    transition-property: transform, opacity;
+}
+
+.duration-500 {
+    transition-duration: 500ms;
+}
