@@ -6,7 +6,11 @@ import { BsFillArrowRightCircleFill } from 'react-icons/bs';
 import Technologies from './Technologies';
 import './createNew.css'
 
-const InputField: React.FC = () => {
+interface InputFieldProps {
+    setter: Function
+}
+
+const InputField = ({ setter }: InputFieldProps) => {
     const nameInputRef = useRef<HTMLInputElement>(null)
     const nameSectionRef = useRef<HTMLInputElement>(null)
     const technologiesSectionRef = useRef<HTMLInputElement>(null)
@@ -16,6 +20,8 @@ const InputField: React.FC = () => {
         const nameInput = nameInputRef.current as any
         const nameSection = nameSectionRef.current as any
         const technologiesSection = technologiesSectionRef.current as any
+
+        setter(nameInput.value)
 
         nameSection.id = 'name-section'
 
@@ -44,7 +50,7 @@ const InputField: React.FC = () => {
                 </div>
             </div>
             <div className="hidden" id='technologies-section' ref={technologiesSectionRef}>
-                <Technologies />
+                <Technologies setter={setter}  />
             </div>
         </>
     );
