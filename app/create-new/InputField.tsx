@@ -36,21 +36,31 @@ const InputField = ({ setter }: InputFieldProps) => {
         <>
             <div className={`relative transition-transform duration-500`} ref={nameSectionRef}>
                 <div className="mt-[40vh]">
-                    <div className="flex justify-center">
-                        <input
-                            type="text"
-                            placeholder="Name your creation..."
-                            className="bg-transparent outline-none text-black text-xl border-black border-b-2 w-[300px]"
-                            ref={nameInputRef}
-                        />
-                        <button id="next-section-btn" className="ml-2 text-blue-600" onClick={nextSection}>
-                            <BsFillArrowRightCircleFill size={30} />
-                        </button>
+                    <div className="flex justify-center mt-6">
+                        <div className="flex justify-center mt-6">
+                            <div className="relative flex">
+                                <input
+                                    type="text"
+                                    placeholder="Name your creation..."
+                                    className="bg-gray-100 outline-none text-black text-lg border border-gray-300 py-2 px-4 rounded-l-md w-64 focus:ring-2 focus:ring-blue-400"
+                                    ref={nameInputRef}
+                                />
+                                <button
+                                    id="next-section-btn"
+                                    className="bg-blue-500 text-white py-2 px-4 rounded-r-md hover:bg-blue-600 transition duration-300 focus:ring-2 focus:ring-blue-400"
+                                    onClick={nextSection}
+                                >
+                                    <BsFillArrowRightCircleFill size={24} />
+                                </button>
+                            </div>
+                        </div>
+
                     </div>
+
                 </div>
             </div>
             <div className="hidden" id='technologies-section' ref={technologiesSectionRef}>
-                <Technologies setter={setter}  />
+                <Technologies setter={setter} />
             </div>
         </>
     );
