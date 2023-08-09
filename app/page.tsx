@@ -10,8 +10,8 @@ export default function Home() {
             <div className='flex items-center flex-col justify-center pt-40 pb-16 flex-wrap lg:flex-nowrap'>
                 <div className='flex flex-wrap flex-col items-center text-center'>
                     <h1 className='flex items-center text-3xl md:text-6xl mb-2 text-gray-900 font-bold'>
-                        <p className='mb-3'>Discover Your</p> &nbsp;
-                        <TextEffect Text='Dream Project' />
+                        <p>Discover Your</p> &nbsp;
+                        <p className='text-blue-600'>Dream Project</p>
                     </h1>
                     <p className='leading-relaxed text-gray-500 text-2xl'>
                         ProjectPlanner helps you get unique project ideas based on the technologies you select.
