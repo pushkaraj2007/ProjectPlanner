@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 interface InputFieldProps {
     setter: Function;
@@ -11,10 +11,16 @@ const Technologies = ({ setter }: InputFieldProps) => {
     const [appType, setAppType] = useState('');
     const [isJS, setIsJS] = useState(false);
     const [complexity, setComplexity] = useState('');
+    const typeSelectRef = useRef<HTMLSelectElement>(null)
+
+
 
     useEffect(() => {
         setIsShown(true);
-    }, []);
+        const typeSelect = typeSelectRef.current as any
+
+        setAppType(typeSelect.value)
+    }, [typeSelectRef]);
 
     const generateIdeas = () => {
         // Implement your logic for generating ideas here
@@ -35,9 +41,11 @@ const Technologies = ({ setter }: InputFieldProps) => {
                 <select
                     name="app-type"
                     id="app-type"
-                    onChange={() => setAppType('Frontend')}
+                    onChange={(event) => setAppType(event.target.value)}
                     className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:border-blue-500"
+                    ref={typeSelectRef}
                 >
+
                     <option value="Frontend">Frontend</option>
                     <option value="Backend">Backend</option>
                     <option value="FullStack">FullStack</option>
