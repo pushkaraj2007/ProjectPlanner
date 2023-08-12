@@ -14,12 +14,19 @@ const InputField = ({ setter }: InputFieldProps) => {
     const nameInputRef = useRef<HTMLInputElement>(null)
     const nameSectionRef = useRef<HTMLInputElement>(null)
     const technologiesSectionRef = useRef<HTMLInputElement>(null)
+    const [projectName, setProjectName] = useState()
 
     async function nextSection() {
         console.log('hello')
         const nameInput = nameInputRef.current as any
         const nameSection = nameSectionRef.current as any
         const technologiesSection = technologiesSectionRef.current as any
+
+        setProjectName(nameInput.value)
+
+        if(nameInput.value.length < 2){
+            return alert("Wrong")
+        }
 
         setter(nameInput.value)
 
@@ -60,7 +67,7 @@ const InputField = ({ setter }: InputFieldProps) => {
                 </div>
             </div>
             <div className="hidden" id='technologies-section' ref={technologiesSectionRef}>
-                <Technologies setter={setter} />
+                <Technologies projectName={projectName as unknown as string} />
             </div>
         </>
     );

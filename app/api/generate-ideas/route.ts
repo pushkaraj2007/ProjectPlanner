@@ -1,8 +1,11 @@
-import { NextResponse, NextRequest } from 'next/server';
+import { NextResponse } from 'next/server';
 import { Configuration, OpenAIApi } from 'openai';
 
-export async function POST(req: NextRequest) {
+export async function POST(request: Request) {
     console.log("Started")
+    const { appType, isJS, complexity, additionalTech } = await request.json()
+
+    console.log("Below is the backend" + appType, isJS, complexity, additionalTech)
 
     const configuration = new Configuration({
         apiKey: process.env.OPENAI_API_KEY,
@@ -18,7 +21,7 @@ export async function POST(req: NextRequest) {
             },
             {
                 "role": "user",
-                "content": "AppType: Backend\nComplexity: Easy\nAdditionalTech: None"
+                "content": `AppType: ${appType}\n ${appType == 'Frontend' ? isJS + '\n' : '' } Complexity: ${complexity}\nAdditionalTech: ${additionalTech}`
             }
         ],
         temperature: 1,
@@ -27,7 +30,8 @@ export async function POST(req: NextRequest) {
         frequency_penalty: 0,
         presence_penalty: 0,
     });
-    
+
+    // Using type assertions to inform TypeScript about the expected types
     const generatedContent = response.data.choices[0].message?.content as string;
 
     try {
@@ -42,8 +46,4 @@ export async function POST(req: NextRequest) {
 
         return NextResponse.error();
     }
-
-    return NextResponse.json({
-        message: 'Success'
-    })
 }

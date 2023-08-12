@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import GeneratedProjects from './projects/GeneratedProjects'
+import ProjectGrid from './projects/ProjectGrid';
 
 interface InputFieldProps {
     projectName: string;
@@ -9,15 +10,44 @@ interface InputFieldProps {
 
 const Technologies = ({ projectName }: InputFieldProps) => {
     const [isShown, setIsShown] = useState(false);
-    const [appType, setAppType] = useState('');
+    const [appType, setAppType] = useState('Frontend');
     const [isJS, setIsJS] = useState(false);
     const [complexity, setComplexity] = useState('');
+    const [additionalTech, setAdditionalTech] = useState('')
     const technologiesSectionRef = useRef<HTMLInputElement>(null)
     const GeneratedProjectsRef = useRef<HTMLInputElement>(null)
+
+    const projectIdeasOptions = {
+        projectName, appType, isJS, complexity, additionalTech
+    };
+
+    const [receivedIdeas, setReceivedIdeas] = useState([]);
+    const [loading, setLoading] = useState(false); // Initialize loading as false
 
     useEffect(() => {
         setIsShown(true);
     }, []);
+
+    async function runFetch() {
+        setLoading(true); // Set loading to true when fetch is initiated
+        try {
+            const response = await fetch('/api/generate-ideas', {
+                method: "post",
+                body: JSON.stringify(projectIdeasOptions),
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            });
+            const res = await response.json();
+
+            setReceivedIdeas(res.message); // Assuming 'ideas' is the key for your array of projects
+            setLoading(false); // Set loading to false when data is fetched
+            console.log(res);
+        } catch (error) {
+            console.error('Error:', error);
+            setLoading(false); // Set loading to false even in case of an error
+        }
+    }
 
     const generateIdeas = () => {
         // Implement your logic for generating ideas here
@@ -30,10 +60,10 @@ const Technologies = ({ projectName }: InputFieldProps) => {
             projectsSection.classList.remove('hidden')
             projectsSection.classList.add('block')
             technologiesSection.classList.add('hidden')
+            runFetch();
         })
-
-        alert(projectName)
     };
+
 
     return (
         <>
@@ -73,9 +103,10 @@ const Technologies = ({ projectName }: InputFieldProps) => {
                             name="js-or-html&css"
                             id="js-or-html&css"
                             className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:border-blue-500"
+                            onChange={(event) => event.target.value == 'true' ? setIsJS(true) : setIsJS(false)}
                         >
-                            <option value="Just HTML & CSS">HTML & CSS</option>
-                            <option value="Include JavaScript">Include JavaScript</option>
+                            <option value="false">HTML & CSS</option>
+                            <option value="true">Include JavaScript</option>
                         </select>
                     </div>
                 ) : (
@@ -90,6 +121,7 @@ const Technologies = ({ projectName }: InputFieldProps) => {
                         name="complexity"
                         id="complexity"
                         className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:border-blue-500"
+                        onChange={(event) => setComplexity(event.target.value)}
                     >
                         <option value="Easy">Easy</option>
                         <option value="Medium">Medium</option>
@@ -109,6 +141,7 @@ const Technologies = ({ projectName }: InputFieldProps) => {
                         type="text"
                         id="additional-technologies"
                         className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:border-blue-500"
+                        onChange={(event) => setAdditionalTech(event.target.value)}
                     />
                 </div>
 
@@ -121,7 +154,16 @@ const Technologies = ({ projectName }: InputFieldProps) => {
             </div>
 
             <div className="hidden" id='technologies-section' ref={GeneratedProjectsRef}>
-                <GeneratedProjects />
+                <div className={`container mx-auto mt-8 min-h-screen ${loading ? 'flex flex-col justify-center' : ''}`}>
+                    {loading ? (
+                        <div className="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+                    ) : (
+                        <>
+                            <h1 className="text-2xl font-semibold mb-4 ml-3">Generated Project ideas</h1>
+                            <ProjectGrid projects={receivedIdeas} />
+                        </>
+                    )}
+                </div>
             </div>
         </>
     );
