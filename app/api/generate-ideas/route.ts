@@ -1,11 +1,27 @@
 import { NextResponse } from 'next/server';
 import { Configuration, OpenAIApi } from 'openai';
+import { getToken } from "next-auth/jwt";
+import { NextApiRequest } from 'next';
+import users from '@/database/users';
 
 export async function POST(request: Request) {
     console.log("Started")
-    const { appType, isJS, complexity, additionalTech } = await request.json()
+    const { projectName, appType, isJS, complexity, additionalTech } = await request.json()
 
     console.log("Below is the backend" + appType, isJS, complexity, additionalTech)
+
+    const token = await getToken({
+        req: request as unknown as NextApiRequest,
+        secret: process.env.NEXTAUTH_SECRET
+    });
+
+    const user = await users.findOne({ email: token?.email })
+
+    if (!user) {
+        return NextResponse.json({
+            error: "User not found"
+        })
+    }
 
     const configuration = new Configuration({
         apiKey: process.env.OPENAI_API_KEY,
@@ -38,6 +54,16 @@ export async function POST(request: Request) {
         const jsonData = JSON.parse(generatedContent);
         const ideasArray = jsonData.ideas;
 
+        console.log("User tokens before:", user.tokens);
+        user.tokens = user.tokens - 1;
+        user.creations.push(
+            {
+                name: projectName,
+                projectsIdeas: ideasArray
+            }
+        )
+        await user.save();
+        console.log("User tokens after:", user.tokens);
         return NextResponse.json({
             message: ideasArray
         });
@@ -46,4 +72,5 @@ export async function POST(request: Request) {
 
         return NextResponse.error();
     }
+
 }
