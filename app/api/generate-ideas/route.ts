@@ -3,8 +3,11 @@ import { Configuration, OpenAIApi } from 'openai';
 import { getToken } from "next-auth/jwt";
 import { NextApiRequest } from 'next';
 import users from '@/database/users';
+import connectToMongo from '@/database/connection';
 
 export async function POST(request: Request) {
+    await connectToMongo();
+    
     console.log("Started")
     const { projectName, appType, isJS, complexity, additionalTech } = await request.json()
 
