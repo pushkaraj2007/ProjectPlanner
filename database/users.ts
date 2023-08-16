@@ -17,6 +17,10 @@ const userSchema = new Schema({
     tokens: {
         type: Number,
         required: true
+    },
+    creations: {
+        type: Array,
+        required: true
     }
 })
 
