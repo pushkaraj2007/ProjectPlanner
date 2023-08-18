@@ -1,8 +1,8 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from 'react';
-import GeneratedProjects from './projects/GeneratedProjects'
+import React, { useState, useEffect, useRef, useContext } from 'react';
 import ProjectGrid from './projects/ProjectGrid';
+import TokenContext from '@/context/tokens/tokenContext';
 
 interface InputFieldProps {
     projectName: string;
@@ -23,6 +23,7 @@ const Technologies = ({ projectName }: InputFieldProps) => {
 
     const [receivedIdeas, setReceivedIdeas] = useState([]);
     const [loading, setLoading] = useState(false); // Initialize loading as false
+    const token = useContext(TokenContext);
 
     useEffect(() => {
         setIsShown(true);
@@ -42,6 +43,7 @@ const Technologies = ({ projectName }: InputFieldProps) => {
 
             setReceivedIdeas(res.message); // Assuming 'ideas' is the key for your array of projects
             setLoading(false); // Set loading to false when data is fetched
+            token.update();
             console.log(res);
         } catch (error) {
             console.error('Error:', error);
