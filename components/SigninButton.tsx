@@ -40,8 +40,8 @@ const SigninButton = () => {
                             />
                             <button className="bg-blue-500 text-white py-2 px-4 rounded-r-md hover:bg-blue-600 transition duration-300 focus:ring-2 focus:ring-blue-400">Apply ✅</button>
                         </div>
-                        <p>If you don't have one you can contact me on <a href="https://twitter.com/pushkaraj2007">X (Twitter)</a></p>
-                        <p>or at <a href="mailto:contactpushkaraj@gmail.com">conatcpushkaraj@gmail.com</a> and I'll help you t get some extra tokens</p>
+                        <p>If you don't have the code you can contact me on <a className="underline" href="https://twitter.com/pushkaraj2007">X (Twitter)</a></p>
+                        <p>or at <a className="underline" href="mailto:contactpushkaraj@gmail.com">conatcpushkaraj@gmail.com</a> and I'll help you to get one</p>
                     </Modal>
                 </div>
                 <Dropdown />
