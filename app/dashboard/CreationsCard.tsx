@@ -8,6 +8,7 @@ import { BsPlusCircle } from 'react-icons/bs';
 import '@/app/create-new/createNew.css'
 import ProjectGrid from './ProjectGrid';
 import TokenContext from '@/context/tokens/tokenContext';
+import { IoChevronBackOutline } from 'react-icons/io5';
 
 interface Creation {
     _id: Key | null | undefined;
@@ -23,7 +24,7 @@ const UserCard: React.FC = () => {
     const [projectsIdeasArray, setProjectsIdeasArray] = useState([])
     const technologiesSectionRef = useRef<HTMLInputElement>(null)
     const GeneratedProjectsRef = useRef<HTMLInputElement>(null)
-    
+
 
     useEffect(() => {
         const fetchUsers = async () => {
@@ -87,7 +88,7 @@ const UserCard: React.FC = () => {
                         <div
                             key={creation.name}
                             className="flex flex-col items-center justify-center p-6 border border-gray-300 rounded-lg hover:shadow-lg transition duration-300 transform hover:-translate-y-1 hover:scale-105 cursor-pointer bg-white min-h-[250px]"
-                            onClick={()=> generateIdeas(creation.projectsIdeas)}
+                            onClick={() => generateIdeas(creation.projectsIdeas)}
                         >
                             <h2 className="text-2xl text-gray-800 font-medium text-center">
                                 {creation.name}
@@ -98,6 +99,12 @@ const UserCard: React.FC = () => {
             }
 
             <div className="hidden container min-h-screen flex flex-col" id='technologies-section' ref={GeneratedProjectsRef}>
+                <div>
+                    <button className="flex cursor-pointer items-center">
+                        <IoChevronBackOutline size={24} />
+                        <p className='ml-2'>Back</p>
+                    </button>
+                </div>
                 <ProjectGrid projects={projectsIdeasArray} />
             </div>
         </>
