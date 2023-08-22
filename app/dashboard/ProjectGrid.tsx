@@ -1,5 +1,7 @@
 // components/ProjectGrid.tsx
 import React from 'react';
+import { FaArrowLeft } from 'react-icons/fa';
+import '@/app/create-new/createNew.css'
 
 interface Project {
     name: string;
