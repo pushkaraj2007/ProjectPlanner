@@ -23,8 +23,12 @@ const TokenState = (props: any) => {
         setTokenCount(tokenCount - 1)
     }
 
+    const updateTokenCountWithCoupon = (count: any) => {
+        setTokenCount(tokenCount + count)
+    }
+
     return (
-        <TokenContext.Provider value={{ tokenCount, update }}>
+        <TokenContext.Provider value={{ tokenCount, update, updateTokenCountWithCoupon }}>
             {props.children}
         </TokenContext.Provider>
     )

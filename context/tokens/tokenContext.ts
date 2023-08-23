@@ -3,7 +3,8 @@ import { createContext } from 'react';
 
 const TokenContext = createContext({
     tokenCount: 0,
-    update: () => { }
+    update: () => { },
+    updateTokenCountWithCoupon: (count: any) => { }
 });
 
 export default TokenContext;
