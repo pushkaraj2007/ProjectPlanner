@@ -24,7 +24,7 @@ const TokenState = (props: any) => {
     }
 
     const updateTokenCountWithCoupon = (count: any) => {
-        setTokenCount(tokenCount + count)
+        setTokenCount(count)
     }
 
     return (
