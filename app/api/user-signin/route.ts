@@ -30,7 +30,7 @@ export async function GET(req: NextApiRequest, res: NextApiResponse) {
         console.log('user exists already')
         return NextResponse.redirect('http://localhost:3000/dashboard')
     } else {
-        await user.create({ name, email, profileImage, tokens: 5, creations: [] }) // Use await here
+        await user.create({ name, email, profileImage, tokens: 5, creations: [], appliedCoupons: [] }) // Use await here
         return NextResponse.redirect('http://localhost:3000/dashboard')
     }
 }
