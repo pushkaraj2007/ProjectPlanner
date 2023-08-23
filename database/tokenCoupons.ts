@@ -2,7 +2,14 @@ import mongoose from "mongoose";
 const { Schema } = mongoose
 
 const tokenCouponsSchema = new Schema({
-    tokenCoupon: String
+    tokenCoupon: {
+        type: String, 
+        required: true
+    },
+    tokensToAdd: {
+        type: Number,
+        required: true
+    }
 })
 
 const tokenCoupons = mongoose.models.tokenCoupons || mongoose.model('tokenCoupons', tokenCouponsSchema)

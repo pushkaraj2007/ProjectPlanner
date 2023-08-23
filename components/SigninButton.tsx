@@ -13,6 +13,7 @@ const SigninButton = () => {
     const tokens = useContext(TokenContext)
     const { data: session } = useSession();
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [tokenCoupon, setTokenCoupon] = useState("");
 
     const openModal = () => {
         setIsModalOpen(true);
@@ -20,6 +21,26 @@ const SigninButton = () => {
 
     const closeModal = () => {
         setIsModalOpen(false);
+    };
+
+    const applyCoupon = async () => {
+        const response = await fetch('/api/apply-coupon', {
+            method: "post",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                tokenCoupon
+            })
+        });
+        console.log("Below is the whole response")
+        console.log(response)
+
+        const res = await response.json();
+
+        tokens.updateTokenCountWithCoupon(res.tokenCount)
+
+        console.log(res)
     };
 
 
@@ -37,8 +58,9 @@ const SigninButton = () => {
                                 type="text"
                                 placeholder="Your token coupon code..."
                                 className="bg-gray-100 outline-none text-black text-lg border border-gray-300 py-2 px-4 rounded-l-md w-full focus:ring-2 focus:ring-blue-400 mb-4"
+                                onChange={(event)=> setTokenCoupon(event.target.value)}
                             />
-                            <button className="bg-blue-500 text-white py-2 px-4 rounded-r-md hover:bg-blue-600 transition duration-300 focus:ring-2 focus:ring-blue-400">Apply ✅</button>
+                            <button className="bg-blue-500 text-white py-2 px-4 rounded-r-md hover:bg-blue-600 transition duration-300 focus:ring-2 focus:ring-blue-400" onClick={applyCoupon}>Apply ✅</button>
                         </div>
                         <p>If you don't have the code you can contact me on <a className="underline" href="https://twitter.com/pushkaraj2007">X (Twitter)</a></p>
                         <p>or at <a className="underline" href="mailto:contactpushkaraj@gmail.com">conatcpushkaraj@gmail.com</a> and I'll help you to get one</p>
