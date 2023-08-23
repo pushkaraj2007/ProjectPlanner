@@ -30,12 +30,12 @@ const SigninButton = () => {
 
                 <div>
                     <Modal isOpen={isModalOpen} onClose={closeModal}>
-                        <h1 className="text-xl font-semibold mb-2">Modal Content</h1>
-                        <p className="mb-4">Do you have any token related code? Apply it here:</p>
+                        <h1 className="text-xl font-semibold mb-2">Token Coupon Code</h1>
+                        <p className="mb-4">Do you have any token related coupon code? Apply it here:</p>
                         <div className="flex flex-col mb-4">
                             <input
                                 type="text"
-                                placeholder="Your token code..."
+                                placeholder="Your token coupon code..."
                                 className="bg-gray-100 outline-none text-black text-lg border border-gray-300 py-2 px-4 rounded-l-md w-full focus:ring-2 focus:ring-blue-400 mb-4"
                             />
                             <button className="bg-blue-500 text-white py-2 px-4 rounded-r-md hover:bg-blue-600 transition duration-300 focus:ring-2 focus:ring-blue-400">Apply ✅</button>
