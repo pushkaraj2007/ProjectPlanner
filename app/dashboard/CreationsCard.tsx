@@ -100,10 +100,10 @@ const UserCard: React.FC = () => {
                     {isTechnologiesVisible && (
                         <div className="container min-h-screen" id='technologies-section' ref={GeneratedProjectsRef}>
                             <div className="flex flex-col slide-out" onAnimationEnd={goBack}>
-                                <div className="flex cursor-pointer items-center" onClick={goBack}>
-                                    <IoChevronBackOutline size={24} />
-                                    <p className='ml-2'>Back</p>
-                                </div>
+                                <button className="flex cursor-pointer items-center w-20 text-lg font-bold text-blue-600 ml-3 group" onClick={goBack}>
+                                    <IoChevronBackOutline size={24} className='group-hover:rotate-180 transition duration-300' />
+                                    <p className='ml-1'>Back</p>
+                                </button>
                                 <ProjectGrid projects={projectsIdeasArray} />
                             </div>
                         </div>
