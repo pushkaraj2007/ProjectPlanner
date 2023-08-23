@@ -21,6 +21,10 @@ const userSchema = new Schema({
     creations: {
         type: Array,
         required: true
+    },
+    appliedCoupons: {
+        type: Array,
+        required: true
     }
 })
 
