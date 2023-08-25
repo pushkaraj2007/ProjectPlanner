@@ -37,6 +37,12 @@ export async function POST(request: Request) {
         })
     }
 
+   if (fetchedUser.appliedCoupons.includes(fetchedCoupon.tokenCoupon)) {
+        return NextResponse.json({
+            error: "Coupon already applied!"
+        });
+    }
+
     fetchedUser.tokens = fetchedUser.tokens + fetchedCoupon.tokensToAdd
     fetchedUser.appliedCoupons.push(fetchedCoupon.tokenCoupon)
     await fetchedUser.save()

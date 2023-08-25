@@ -8,6 +8,9 @@ import TokenContext from "@/context/tokens/tokenContext";
 import Image from "next/image";
 import Modal from "./Modal";
 import Dropdown from "./Dropdown";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import Spinner from "./Spinner";
 
 const SigninButton = () => {
     const tokens = useContext(TokenContext)
@@ -38,6 +41,10 @@ const SigninButton = () => {
 
         const res = await response.json();
 
+        if (res.error) {
+            return toast.error(res.error)
+        }
+
         tokens.updateTokenCountWithCoupon(res.tokenCount)
 
         console.log(res)
@@ -47,6 +54,7 @@ const SigninButton = () => {
     if (session && session.user) {
         return (
             <div className="flex items-center gap-4 ml-auto">
+                <ToastContainer />
                 <button className="border border-transparent py-1 px-2 transition duration-300 hover:border-green-500" onClick={openModal}>🔥 {tokens.tokenCount}</button>
 
                 <div>
@@ -58,9 +66,14 @@ const SigninButton = () => {
                                 type="text"
                                 placeholder="Your token coupon code..."
                                 className="bg-gray-100 outline-none text-black text-lg border border-gray-300 py-2 px-4 rounded-l-md w-full focus:ring-2 focus:ring-blue-400 mb-4"
-                                onChange={(event)=> setTokenCoupon(event.target.value)}
+                                onChange={(event) => setTokenCoupon(event.target.value)}
                             />
-                            <button className="bg-blue-500 text-white py-2 px-4 rounded-r-md hover:bg-blue-600 transition duration-300 focus:ring-2 focus:ring-blue-400" onClick={applyCoupon}>Apply ✅</button>
+                            <button className="bg-blue-500 text-white py-2 px-4 rounded-r-md hover:bg-blue-600 transition duration-300 focus:ring-2 focus:ring-blue-400" onClick={applyCoupon}>
+                                Apply ✅
+                                <div style={{ height: '15px', width: '15px' }}>
+                                    <Spinner />
+                                </div>
+                            </button>
                         </div>
                         <p>If you don't have the code you can contact me on <a className="underline" href="https://twitter.com/pushkaraj2007">X (Twitter)</a></p>
                         <p>or at <a className="underline" href="mailto:contactpushkaraj@gmail.com">conatcpushkaraj@gmail.com</a> and I'll help you to get one</p>
