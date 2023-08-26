@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import ProjectGrid from './ProjectGrid';
 
 interface GeneratedProjectsProps {
@@ -22,6 +22,7 @@ const GeneratedProjects = ({ projectName, appType, isJS, complexity, additionalT
     const [loading, setLoading] = useState(false); // Initialize loading as false
     const [fetchTriggered, setFetchTriggered] = useState(false); // Track if fetch has been triggered
 
+
     async function runFetch() {
         setLoading(true); // Set loading to true when fetch is initiated
         try {
@@ -33,9 +34,9 @@ const GeneratedProjects = ({ projectName, appType, isJS, complexity, additionalT
                 }
             });
             const res = await response.json();
-
             setReceivedIdeas(res.message); // Assuming 'ideas' is the key for your array of projects
             setLoading(false); // Set loading to false when data is fetched
+            
             console.log(res);
         } catch (error) {
             console.error('Error:', error);
