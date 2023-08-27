@@ -10,13 +10,22 @@ import Modal from "./Modal";
 import Dropdown from "./Dropdown";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Spinner from "./Spinner";
 
 const SigninButton = () => {
     const tokens = useContext(TokenContext)
     const { data: session } = useSession();
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [tokenCoupon, setTokenCoupon] = useState("");
+    const [isLoading, setIsLoading] = useState(false);
+
+    function keyDown(e: any) {                                                                     
+        var key = e.keyCode;
+        //space pressed
+        if (key == 32) { //space
+            e.preventDefault();
+        }
+
+    }
 
     const openModal = () => {
         setIsModalOpen(true);
@@ -27,6 +36,7 @@ const SigninButton = () => {
     };
 
     const applyCoupon = async () => {
+        setIsLoading(true)
         const response = await fetch('/api/apply-coupon', {
             method: "post",
             headers: {
@@ -42,10 +52,13 @@ const SigninButton = () => {
         const res = await response.json();
 
         if (res.error) {
+            setIsLoading(false)
             return toast.error(res.error)
         }
 
+        toast.success(res.success)
         tokens.updateTokenCountWithCoupon(res.tokenCount)
+        setIsLoading(false)
 
         console.log(res)
     };
@@ -67,13 +80,9 @@ const SigninButton = () => {
                                 placeholder="Your token coupon code..."
                                 className="bg-gray-100 outline-none text-black text-lg border border-gray-300 py-2 px-4 rounded-l-md w-full focus:ring-2 focus:ring-blue-400 mb-4"
                                 onChange={(event) => setTokenCoupon(event.target.value)}
+                                onKeyDown={(event)=>keyDown(event)}
                             />
-                            <button className="bg-blue-500 text-white py-2 px-4 rounded-r-md hover:bg-blue-600 transition duration-300 focus:ring-2 focus:ring-blue-400" onClick={applyCoupon}>
-                                Apply ✅
-                                <div style={{ height: '15px', width: '15px' }}>
-                                    <Spinner />
-                                </div>
-                            </button>
+                            <button className="bg-blue-500 text-white py-2 px-4 rounded-r-md hover:bg-blue-600 transition duration-300 focus:ring-2 focus:ring-blue-400" onClick={applyCoupon} disabled={isLoading}>{isLoading ? "Checking validity..." : "Apply ✅"}</button>
                         </div>
                         <p>If you don't have the code you can contact me on <a className="underline" href="https://twitter.com/pushkaraj2007">X (Twitter)</a></p>
                         <p>or at <a className="underline" href="mailto:contactpushkaraj@gmail.com">conatcpushkaraj@gmail.com</a> and I'll help you to get one</p>
