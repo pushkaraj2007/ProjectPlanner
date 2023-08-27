@@ -4,6 +4,7 @@
 import React, { useState, useRef } from 'react';
 import { BsFillArrowRightCircleFill } from 'react-icons/bs';
 import Technologies from './Technologies';
+import { ToastContainer, toast } from 'react-toastify';
 import './createNew.css'
 
 interface InputFieldProps {
@@ -24,8 +25,8 @@ const InputField = ({ setter }: InputFieldProps) => {
 
         setProjectName(nameInput.value)
 
-        if(nameInput.value.length < 2){
-            return alert("Wrong")
+        if(nameInput.value.replace(/\s/g,'').length < 2){
+            return toast.error('Creation name must be at least 2 characters long')
         }
 
         setter(nameInput.value)
@@ -42,6 +43,7 @@ const InputField = ({ setter }: InputFieldProps) => {
     return (
         <>
             <div className={`relative transition-transform duration-500`} ref={nameSectionRef}>
+                <ToastContainer />
                 <div className="mt-[40vh]">
                     <div className="flex justify-center mt-6">
                         <div className="flex justify-center mt-6">
