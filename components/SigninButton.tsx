@@ -19,7 +19,7 @@ const SigninButton = () => {
     const [isLoading, setIsLoading] = useState(false);
 
     function keyDown(e: any) {                                                                     
-        var key = e.keyCode;
+        let key = e.keyCode;
         //space pressed
         if (key == 32) { //space
             e.preventDefault();
@@ -36,6 +36,9 @@ const SigninButton = () => {
     };
 
     const applyCoupon = async () => {
+        if(tokenCoupon.length === 0){
+            return toast.error("Please enter a coupon code")
+        }
         setIsLoading(true)
         const response = await fetch('/api/apply-coupon', {
             method: "post",
