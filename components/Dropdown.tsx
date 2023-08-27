@@ -62,7 +62,7 @@ const ProfileDropdown: NextPage = () => {
                             <MdSpaceDashboard /> <span className="ml-1">Dashboard</span>
                         </div>
                     </Link>
-                    <div className="dropdown-link flex items-center h-[33.33%] text-lg p-1" onClick={() => signOut()}>
+                    <div className="dropdown-link flex items-center h-[33.33%] text-lg p-1 cursor-pointer" onClick={() => signOut()}>
                         <IoMdLogOut /> <span className="ml-1">Logout</span>
                     </div>
                 </div>
