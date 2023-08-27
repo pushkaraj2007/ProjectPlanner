@@ -52,17 +52,17 @@ const ProfileDropdown: NextPage = () => {
                     ref={dropdownRef}
                     className="dropdown-div bg-gray-100 h-36 w-48 mt-2 rounded-lg shadow-lg shadow-gray-600 absolute text-black right-1 flex flex-col"
                 >
-                    <Link href="/profile" className="h-[33.33%] flex items-center text-lg p-1">
+                    <Link href="/profile" className="h-[33.33%] flex items-center text-lg p-1 transition duration-500 hover:bg-gray-200">
                         <div className="dropdown-link flex items-center">
                             <FaUser /> <span className="ml-1">Profile</span>
                         </div>
                     </Link>
-                    <Link href="/dashboard" className="h-[33.33%] flex items-center text-lg p-1">
+                    <Link href="/dashboard" className="h-[33.33%] flex items-center text-lg p-1 transition duration-500 hover:bg-gray-200">
                         <div className="dropdown-link flex items-center">
                             <MdSpaceDashboard /> <span className="ml-1">Dashboard</span>
                         </div>
                     </Link>
-                    <div className="dropdown-link flex items-center h-[33.33%] text-lg p-1 cursor-pointer" onClick={() => signOut()}>
+                    <div className="dropdown-link flex items-center h-[33.33%] text-lg p-1 cursor-pointer transition duration-500 hover:bg-gray-200" onClick={() => signOut()}>
                         <IoMdLogOut /> <span className="ml-1">Logout</span>
                     </div>
                 </div>
