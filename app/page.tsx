@@ -1,10 +1,39 @@
+"use client";
+
 import Head from 'next/head';
 import Link from 'next/link';
 import Image from 'next/image';
-import { FiArrowRight } from 'react-icons/fi'
+import { FiArrowDownCircle, FiArrowRight, FiArrowUpCircle } from 'react-icons/fi'
 import { FaChartLine, FaCoins, FaLightbulb, FaLock, FaPuzzlePiece, FaUser } from 'react-icons/fa';
+import { useState } from 'react'
 
 export default function Home() {
+
+    const faqData = [
+        {
+            question: "What is ProjectPlanner?",
+            answer: "ProjectPlanner is an AI-powered tool that generates project ideas based on your selected technologies and interests.",
+        },
+        {
+            question: "How do I get project suggestions?",
+            answer: "Our AI algorithm analyzes your preferences and skills to provide you with relevant project ideas.",
+        },
+        {
+            question: "Is it suitable for beginners?",
+            answer: "Yes, ProjectPlanner offers project ideas for all skill levels, from beginners to experienced developers.",
+        },
+        // Add more FAQ items here
+    ];
+
+    const [activeIndex, setActiveIndex] = useState(null);
+
+    const toggleAccordion = (index: any) => {
+        if (activeIndex === index) {
+            setActiveIndex(null);
+        } else {
+            setActiveIndex(index);
+        }
+    };
     return (
         <>
             <section className='body-font min-h-screen w-full'>
@@ -97,6 +126,41 @@ export default function Home() {
                     </div>
                 </div>
             </section>
+
+            <section className="py-16 bg-gray-100">
+                <div className="container mx-auto text-center">
+                    <h2 className="text-3xl font-semibold mb-6">Frequently Asked Questions</h2>
+                    <div className="flex flex-col items-center space-y-4">
+                        {faqData.map((item, index) => (
+                            <div
+                                key={index}
+                                className="bg-white p-4 w-[600px] rounded-lg shadow-md cursor-pointer transition-all duration-300 transform hover:scale-105"
+                                onClick={() => toggleAccordion(index)}
+                            >
+                                <div
+                                    className="flex items-center justify-between"
+                                    
+                                >
+                                    <h3 className="text-lg md:text-xl font-semibold">{item.question}</h3>
+                                    <span className="text-blue-600">
+                                        {activeIndex === index ? (
+                                            <FiArrowUpCircle />
+                                        ) : (
+                                            <FiArrowDownCircle />
+                                        )}
+                                    </span>
+                                </div>
+                                {activeIndex === index && (
+                                    <p className="text-gray-600 mt-2 text-left">{item.answer}</p>
+                                )}
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+
+
         </>
     );
 }
