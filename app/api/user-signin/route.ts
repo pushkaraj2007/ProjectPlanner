@@ -34,3 +34,4 @@ export async function GET(req: Request, res: NextApiResponse) {
         return NextResponse.redirect('http://localhost:3000/dashboard')
     }
 }
+ 
