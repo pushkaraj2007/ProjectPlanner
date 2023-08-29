@@ -5,9 +5,17 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { FiArrowDownCircle, FiArrowRight, FiArrowUpCircle } from 'react-icons/fi'
 import { FaChartLine, FaCoins, FaLightbulb, FaLock, FaPuzzlePiece, FaUser } from 'react-icons/fa';
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 export default function Home() {
+
+    useEffect(() => {
+        AOS.init();
+    })
+    
+    
 
     const faqData = [
         {
@@ -71,7 +79,7 @@ export default function Home() {
                     <h2 className="text-3xl font-semibold mb-6">Discover the Power of ProjectPlanner</h2>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                         {/* User Friendly Interface */}
-                        <div className="flex flex-col items-center bg-white rounded-lg shadow-md p-4">
+                        <div className="flex flex-col items-center bg-white rounded-lg shadow-md p-4" data-aos="fade-right">
                             <div className="bg-blue-500 text-white rounded-full p-4">
                                 <FaUser className="text-2xl" />
                             </div>
@@ -80,7 +88,7 @@ export default function Home() {
                         </div>
 
                         {/* Different Complexity Levels */}
-                        <div className="flex flex-col items-center bg-white rounded-lg shadow-md p-4">
+                        <div className="flex flex-col items-center bg-white rounded-lg shadow-md p-4" data-aos="fade-right">
                             <div className="bg-green-500 text-white rounded-full p-4">
                                 <FaPuzzlePiece className="text-2xl" />
                             </div>
@@ -89,7 +97,7 @@ export default function Home() {
                         </div>
 
                         {/* Relevant Project Ideas */}
-                        <div className="flex flex-col items-center bg-white rounded-lg shadow-md p-4">
+                        <div className="flex flex-col items-center bg-white rounded-lg shadow-md p-4" data-aos="fade-right">
                             <div className="bg-purple-500 text-white rounded-full p-4">
                                 <FaLightbulb className="text-2xl" />
                             </div>
@@ -98,7 +106,7 @@ export default function Home() {
                         </div>
 
                         {/* Free Credits */}
-                        <div className="flex flex-col items-center bg-white rounded-lg shadow-md p-4">
+                        <div className="flex flex-col items-center bg-white rounded-lg shadow-md p-4" data-aos="fade-left">
                             <div className="bg-yellow-500 text-white rounded-full p-4">
                                 <FaCoins className="text-2xl" />
                             </div>
@@ -107,7 +115,7 @@ export default function Home() {
                         </div>
 
                         {/* Secure */}
-                        <div className="flex flex-col items-center bg-white rounded-lg shadow-md p-4">
+                        <div className="flex flex-col items-center bg-white rounded-lg shadow-md p-4" data-aos="fade-left">
                             <div className="bg-red-500 text-white rounded-full p-4">
                                 <FaLock className="text-2xl" />
                             </div>
@@ -116,7 +124,7 @@ export default function Home() {
                         </div>
 
                         {/* Regular Improvement */}
-                        <div className="flex flex-col items-center bg-white rounded-lg shadow-md p-4">
+                        <div className="flex flex-col items-center bg-white rounded-lg shadow-md p-4" data-aos="fade-left">
                             <div className="bg-blue-900 text-white rounded-full p-4">
                                 <FaChartLine className="text-2xl" />
                             </div>
@@ -134,7 +142,7 @@ export default function Home() {
                         {faqData.map((item, index) => (
                             <div
                                 key={index}
-                                className="bg-white p-4 w-[600px] rounded-lg shadow-md cursor-pointer transition-all duration-300 transform hover:scale-105"
+                                className="bg-transparent border border-black p-4 w-full rounded-lg shadow-md cursor-pointer transition-all duration-300"
                                 onClick={() => toggleAccordion(index)}
                             >
                                 <div
