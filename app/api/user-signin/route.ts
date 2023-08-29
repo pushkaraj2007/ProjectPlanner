@@ -4,11 +4,11 @@ import { NextResponse } from "next/server";
 import { NextApiRequest, NextApiResponse } from "next";
 import { getToken } from "next-auth/jwt";
 
-export async function GET(req: NextApiRequest, res: NextApiResponse) {
+export async function GET(req: Request, res: NextApiResponse) {
     await connectToMongo();
 
     const token = await getToken({
-        req,
+        req: req as unknown as NextApiRequest,
         secret: process.env.NEXTAUTH_SECRET
     });
 
