@@ -14,8 +14,8 @@ export default function Home() {
     useEffect(() => {
         AOS.init();
     })
-    
-    
+
+
 
     const faqData = [
         {
@@ -45,8 +45,8 @@ export default function Home() {
     return (
         <>
             <section className='body-font min-h-screen w-full'>
-                <div className='flex items-center flex-col justify-center pt-40 pb-16 flex-wrap lg:flex-nowrap'>
-                    <div className='flex flex-wrap flex-col items-center text-center'>
+                <div className='flex items-center justify-around pt-36 pb-16'>
+                    <div className='flex flex-wrap flex-col'>
                         <h1 className='flex items-center text-3xl md:text-6xl mb-2 text-gray-900 font-bold'>
                             <p>Discover Your</p> &nbsp;
                             <p className='text-blue-600'>Dream Project</p>
@@ -57,22 +57,20 @@ export default function Home() {
                         </p>
 
                         <button
-                            className="flex items-center mt-8 mx-auto bg-blue-700 text-white px-8 py-4 text-xl md:text-2xl font-semibold rounded-full shadow-lg hover:bg-opacity-95 transition-all duration-300 hover:scale-95 transform"
+                            className="flex items-center w-[250px] mt-8 bg-blue-700 text-white px-8 py-4 text-xl md:text-2xl font-semibold rounded-full shadow-lg hover:bg-opacity-95 transition-all duration-300 hover:scale-95 transform"
                         >
                             Get Started
-                            <span className="ml-1"> {/* Wrap the SVG in a separate span */}
-                                <FiArrowRight />
-                            </span>
+                            <FiArrowRight className='ml-2' />
                         </button>
 
                     </div>
 
-                    <div className=' mt-36'>
-                        <Image src={'/man-coding.svg'} height={600} width={600} alt='Man coding' className='mt-7 lg:mt-0' />
+                    <div>
+                        <Image src={'/home-hero-1.png'} height={600} width={600} alt='Man coding' className='mt-7 lg:mt-0 shadow-lg' />
                     </div>
 
                 </div>
-            </section >
+            </section>
 
             <section className="py-16">
                 <div className="container mx-auto text-center">
@@ -147,7 +145,7 @@ export default function Home() {
                             >
                                 <div
                                     className="flex items-center justify-between"
-                                    
+
                                 >
                                     <h3 className="text-lg md:text-xl font-semibold">{item.question}</h3>
                                     <span className="text-blue-600">
