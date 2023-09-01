@@ -46,27 +46,26 @@ export default function Home() {
         <>
             <section className='body-font min-h-screen w-full'>
                 <div className='flex items-center justify-around pt-36 pb-16'>
-                    <div className='flex flex-wrap flex-col'>
-                        <h1 className='flex items-center text-3xl md:text-6xl mb-2 text-gray-900 font-bold'>
-                            <p>Discover Your</p> &nbsp;
-                            <p className='text-blue-600'>Dream Project</p>
+                    <div className="md:w-[45%]">
+                        <h1 className="text-4xl md:text-6xl font-bold leading-tight">
+                            Discover Your <span className="text-blue-600">Dream Project</span>
                         </h1>
-                        <p className='leading-relaxed text-gray-500 text-2xl'>
-                            ProjectPlanner helps you get unique project ideas based on the technologies you select.
-                            <br />Never run out of ideas again!
+                        <p className="text-xl md:text-2xl text-gray-400 mt-4">
+                            ProjectPlanner helps you find unique project ideas based on your selected technologies. Never run out of ideas again!
                         </p>
-
-                        <button
-                            className="flex items-center w-[250px] mt-8 bg-blue-700 text-white px-8 py-4 text-xl md:text-2xl font-semibold rounded-full shadow-lg hover:bg-opacity-95 transition-all duration-300 hover:scale-95 transform"
-                        >
-                            Get Started
-                            <FiArrowRight className='ml-2' />
+                        <button className="bg-blue-700 hover:bg-blue-600 text-white flex items-center px-6 py-4 mt-6 md:mt-8 text-xl font-semibold rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition duration-300">
+                            Get Started <FiArrowRight className="ml-2" />
                         </button>
-
                     </div>
 
                     <div>
-                        <Image src={'/home-hero-1.png'} height={600} width={600} alt='Man coding' className='mt-7 lg:mt-0 shadow-lg' />
+                        <Image
+                            src={'/home-hero-1.png'}
+                            height={600}
+                            width={600}
+                            alt='Man coding'
+                            className='mt-7 lg:mt-0 shadow-xl animate-jump' // Add animate-jump class
+                        />
                     </div>
 
                 </div>
