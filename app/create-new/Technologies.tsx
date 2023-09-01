@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useRef, useContext } from 'react';
 import ProjectGrid from './projects/ProjectGrid';
 import TokenContext from '@/context/tokens/tokenContext';
+import ReactLoading from 'react-loading';
 
 interface InputFieldProps {
     projectName: string;
@@ -32,7 +33,7 @@ const Technologies = ({ projectName }: InputFieldProps) => {
     async function runFetch() {
         setLoading(true); // Set loading to true when fetch is initiated
         try {
-            const response = await fetch('/api/generate-ideas', {
+            const response = await fetch('/api/generate-ideasya', {
                 method: "post",
                 body: JSON.stringify(projectIdeasOptions),
                 headers: {
@@ -47,7 +48,7 @@ const Technologies = ({ projectName }: InputFieldProps) => {
             console.log(res);
         } catch (error) {
             console.error('Error:', error);
-            setLoading(false); // Set loading to false even in case of an error
+            // setLoading(false); // Set loading to false even in case of an error
         }
     }
 
@@ -153,12 +154,15 @@ const Technologies = ({ projectName }: InputFieldProps) => {
                 >
                     Generate Ideas ✨
                 </button>
+
             </div>
 
             <div className="hidden" id='technologies-section' ref={GeneratedProjectsRef}>
-                <div className={`container mx-auto mt-8 min-h-screen ${loading ? 'flex flex-col justify-center' : ''}`}>
+                <div className={`container mx-auto min-h-screen ${loading ? 'flex flex-col justify-center' : ''}`}>
                     {loading ? (
-                        <div className="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+                        <>
+                            <ReactLoading type={'spin'} color={'#0000FF'} height={'120px'} width={'120px'} />
+                        </>
                     ) : (
                         <>
                             <h1 className="text-2xl font-semibold mb-4 ml-3">Generated Project ideas</h1>
@@ -167,6 +171,8 @@ const Technologies = ({ projectName }: InputFieldProps) => {
                     )}
                 </div>
             </div>
+
+            <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
         </>
     );
 };
