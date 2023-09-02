@@ -45,7 +45,7 @@ export default function Home() {
     return (
         <>
             <section className='body-font min-h-screen w-full'>
-                <div className='flex items-center justify-around pt-36 pb-16'>
+                <div className='flex items-center flex-wrap justify-around pt-36 pb-16'>
                     <div className="md:w-[45%]">
                         <h1 className="text-4xl md:text-6xl font-bold leading-tight">
                             Discover Your <span className="text-blue-600">Dream Project</span>
