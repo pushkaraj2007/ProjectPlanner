@@ -12,7 +12,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ReactLoading from "react-loading";
 import Link from "next/link";
-import Router from "next/router";
+import { usePathname } from "next/navigation";
 
 const SigninButton = () => {
     const tokens = useContext(TokenContext)
@@ -20,6 +20,7 @@ const SigninButton = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [tokenCoupon, setTokenCoupon] = useState("");
     const [isLoading, setIsLoading] = useState(false);
+    const pathname = usePathname()
 
     function keyDown(e: any) {
         let key = e.keyCode;
@@ -97,11 +98,20 @@ const SigninButton = () => {
                     </Modal>
                 </div>
 
-                <Link href={'/dashboard'}>
-                    <button className="p-2 px-4 bg-blue-600 rounded-full text-white flex items-center">
-                        Dashboard
+                <Link href={pathname === '/dashboard' ? '/#' : '/dashboard'}>
+                    <button
+                        className={`p-2 px-4 ${pathname === '/dashboard' ? 'bg-red-600' : 'bg-blue-600'} rounded-full text-white flex items-center`}
+                        onClick={() => {
+                            if (pathname === '/dashboard') {
+                                signOut();
+                            }
+                        }}
+                    >
+                        {pathname === '/dashboard' ? 'Logout' : 'Dashboard'}
                     </button>
                 </Link>
+
+
             </div>
         );
     }
