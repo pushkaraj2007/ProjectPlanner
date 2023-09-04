@@ -121,7 +121,7 @@ const SigninButton = () => {
             onClick={() => signIn('google', {
                 callbackUrl: 'http://localhost:3000/api/user-signin'
             })}
-            className="text-green-600 text-xl border border-transparent rounded-md py-2 px-4 transition duration-300 hover:border-green-500"
+            className="bg-blue-700 hover:bg-blue-600 text-white flex items-center px-4 py-3 mt-6 md:mt-8 text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition duration-300"
         >
             Login / Signup
         </button>
