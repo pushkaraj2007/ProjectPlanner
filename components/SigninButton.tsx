@@ -10,15 +10,18 @@ import Modal from "./Modal";
 import Dropdown from "./Dropdown";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import ReactLoading from "react-loading";
+import Link from "next/link";
+import Router from "next/router";
 
 const SigninButton = () => {
     const tokens = useContext(TokenContext)
-    const { data: session } = useSession();
+    const { data: session, status } = useSession();
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [tokenCoupon, setTokenCoupon] = useState("");
     const [isLoading, setIsLoading] = useState(false);
 
-    function keyDown(e: any) {                                                                     
+    function keyDown(e: any) {
         let key = e.keyCode;
         //space pressed
         if (key == 32) { //space
@@ -36,7 +39,7 @@ const SigninButton = () => {
     };
 
     const applyCoupon = async () => {
-        if(tokenCoupon.length === 0){
+        if (tokenCoupon.length === 0) {
             return toast.error("Please enter a coupon code")
         }
         setIsLoading(true)
@@ -66,8 +69,10 @@ const SigninButton = () => {
         console.log(res)
     };
 
-
-    if (session && session.user) {
+    if (status === 'loading') {
+        return <ReactLoading type={'bubbles'} color={'#0000FF'} height={'70px'} width={'70px'} />
+    }
+    if (status === 'authenticated') {
         return (
             <div className="flex items-center gap-4 ml-auto">
                 <ToastContainer />
@@ -83,7 +88,7 @@ const SigninButton = () => {
                                 placeholder="Your token coupon code..."
                                 className="bg-gray-100 outline-none text-black text-lg border border-gray-300 py-2 px-4 rounded-l-md w-full focus:ring-2 focus:ring-blue-400 mb-4"
                                 onChange={(event) => setTokenCoupon(event.target.value)}
-                                onKeyDown={(event)=>keyDown(event)}
+                                onKeyDown={(event) => keyDown(event)}
                             />
                             <button className="bg-blue-500 text-white py-2 px-4 rounded-r-md hover:bg-blue-600 transition duration-300 focus:ring-2 focus:ring-blue-400" onClick={applyCoupon} disabled={isLoading}>{isLoading ? "Checking validity..." : "Apply ✅"}</button>
                         </div>
@@ -91,7 +96,12 @@ const SigninButton = () => {
                         <p>or at <a className="underline" href="mailto:contactpushkaraj@gmail.com">conatcpushkaraj@gmail.com</a> and I'll help you to get one</p>
                     </Modal>
                 </div>
-                <Dropdown />
+
+                <Link href={'/dashboard'}>
+                    <button className="p-2 px-4 bg-blue-600 rounded-full text-white flex items-center">
+                        Dashboard
+                    </button>
+                </Link>
             </div>
         );
     }
