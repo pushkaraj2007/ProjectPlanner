@@ -119,7 +119,7 @@ const SigninButton = () => {
     return (
         <button
             onClick={() => signIn('google', {
-                callbackUrl: `${process.env.WEB_URL}/api/user-signin`
+                callbackUrl: `https://projectplanner.vercel.app/api/user-signin`
             })}
             className="bg-blue-700 text-white flex items-center px-4 py-3 mt-6 md:mt-8 text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transform hover:scale-95 transition duration-300"
         >

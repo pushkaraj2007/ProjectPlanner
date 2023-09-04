@@ -13,7 +13,7 @@ export async function GET(req: Request, res: NextApiResponse) {
     });
 
     if (!token) {
-        return NextResponse.redirect(`${process.env.WEB_URL}/auth/signin`)
+        return NextResponse.redirect(`https://projectplanner.vercel.app/auth/signin`)
     }
 
     const name = token?.name
@@ -28,10 +28,10 @@ export async function GET(req: Request, res: NextApiResponse) {
     console.log(registeredUser)
     if (registeredUser) {
         console.log('user exists already')
-        return NextResponse.redirect(`${process.env.WEB_URL}/dashboard`)
+        return NextResponse.redirect(`https://projectplanner.vercel.app/dashboard`)
     } else {
         await user.create({ name, email, profileImage, tokens: 5, creations: [], appliedCoupons: [] }) // Use await here
-        return NextResponse.redirect(`${process.env.WEB_URL}/dashboard`)
+        return NextResponse.redirect(`https://projectplanner.vercel.app/dashboard`)
     }
 }
  
