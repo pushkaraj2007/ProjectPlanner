@@ -30,6 +30,14 @@ export default function Home() {
             question: "Is it suitable for beginners?",
             answer: "Yes, ProjectPlanner offers project ideas for all skill levels, from beginners to experienced developers.",
         },
+        {
+            question: "What is the pricing of ProjectPlanner?",
+            answer: "The ProjectPlanner is currently in beta with limited features. The pricing is not yet decided.",
+        },
+        {
+            question: "What if I run out of my tokens?",
+            answer: `You get 5 free tokens to test out ProjectPlanner. You can contact me at <a href="mailto:contactpushkaraj@gmail.com" class="text-blue-400 underline font-bold">contactpushkaraj@gmail.com</a> to get more tokens.`,
+        },
         // Add more FAQ items here
     ];
 
@@ -139,7 +147,8 @@ export default function Home() {
                         {faqData.map((item, index) => (
                             <div
                                 key={index}
-                                className="bg-transparent border border-black p-4 w-full rounded-lg shadow-md cursor-pointer transition-all duration-300"
+                                className="bg-white border border-black p-4 w-full rounded-lg shadow-md cursor-pointer transition-all duration-300"
+                                data-aos="fade-up"
                                 onClick={() => toggleAccordion(index)}
                             >
                                 <div
@@ -149,14 +158,17 @@ export default function Home() {
                                     <h3 className="text-lg md:text-xl font-semibold">{item.question}</h3>
                                     <span className="text-blue-600">
                                         {activeIndex === index ? (
-                                            <FiArrowUpCircle />
+                                            <FiArrowUpCircle size={25} />
                                         ) : (
-                                            <FiArrowDownCircle />
+                                            <FiArrowDownCircle size={25} />
                                         )}
                                     </span>
                                 </div>
                                 {activeIndex === index && (
-                                    <p className="text-gray-600 mt-2 text-left">{item.answer}</p>
+                                    <p
+                                    className="text-gray-600 mt-2 text-left"
+                                    dangerouslySetInnerHTML={{ __html: item.answer }}
+                                  ></p>
                                 )}
                             </div>
                         ))}

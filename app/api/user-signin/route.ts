@@ -13,7 +13,7 @@ export async function GET(req: Request, res: NextApiResponse) {
     });
 
     if (!token) {
-        return NextResponse.redirect('http://localhost:3000/auth/signin')
+        return NextResponse.redirect(`${process.env.WEB_URL}/auth/signin`)
     }
 
     const name = token?.name
@@ -28,10 +28,10 @@ export async function GET(req: Request, res: NextApiResponse) {
     console.log(registeredUser)
     if (registeredUser) {
         console.log('user exists already')
-        return NextResponse.redirect('http://localhost:3000/dashboard')
+        return NextResponse.redirect(`${process.env.WEB_URL}/dashboard`)
     } else {
         await user.create({ name, email, profileImage, tokens: 5, creations: [], appliedCoupons: [] }) // Use await here
-        return NextResponse.redirect('http://localhost:3000/dashboard')
+        return NextResponse.redirect(`${process.env.WEB_URL}/dashboard`)
     }
 }
  

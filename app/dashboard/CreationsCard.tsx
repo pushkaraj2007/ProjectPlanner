@@ -9,6 +9,8 @@ import '@/app/create-new/createNew.css'
 import ProjectGrid from './ProjectGrid';
 import TokenContext from '@/context/tokens/tokenContext';
 import { IoChevronBackOutline } from 'react-icons/io5';
+import { redirect } from 'next/navigation';
+import ReactLoading from 'react-loading';
 
 interface Creation {
     _id: Key | null | undefined;
@@ -25,6 +27,11 @@ const UserCard: React.FC = () => {
     const [isTechnologiesVisible, setIsTechnologiesVisible] = useState(false);
     const technologiesSectionRef = useRef<HTMLInputElement>(null);
     const GeneratedProjectsRef = useRef<HTMLInputElement>(null);
+    const { data: session, status } = useSession()
+
+    if (status === 'unauthenticated') {
+        redirect('/')
+    }
 
     useEffect(() => {
         const fetchUsers = async () => {
@@ -72,7 +79,7 @@ const UserCard: React.FC = () => {
         <>
             {isLoading ? (
                 <div>
-                    Loading...
+                    <ReactLoading type={'spin'} color={'#0000FF'} height={'120px'} width={'120px'} />
                 </div>
             ) : (
                 <>
@@ -85,17 +92,22 @@ const UserCard: React.FC = () => {
                                 Create New
                             </h2>
                         </Link>
-                        {creations.map((creation) => (
-                            <div
-                                key={creation.name}
-                                className="flex flex-col items-center justify-center p-6 border border-gray-300 rounded-lg hover:shadow-lg transition duration-300 transform hover:-translate-y-1 hover:scale-105 cursor-pointer bg-white min-h-[250px]"
-                                onClick={() => generateIdeas(creation.projectsIdeas)}
-                            >
-                                <h2 className="text-2xl text-gray-800 font-medium text-center">
-                                    {creation.name}
-                                </h2>
-                            </div>
-                        ))}
+                        {creations && creations.length > 0 ? (
+                            creations.map((creation) => (
+                                <div
+                                    key={creation.name}
+                                    className="flex flex-col items-center justify-center p-6 border border-gray-300 rounded-lg hover:shadow-lg transition duration-300 transform hover:-translate-y-1 hover:scale-105 cursor-pointer bg-white min-h-[250px]"
+                                    onClick={() => generateIdeas(creation.projectsIdeas)}
+                                >
+                                    <h2 className="text-2xl text-gray-800 font-medium text-center">
+                                        {creation.name}
+                                    </h2>
+                                </div>
+                            ))
+                        ) : (
+                            ''
+                        )}
+
                     </div>
                     {isTechnologiesVisible && (
                         <div className="container min-h-screen" id='technologies-section' ref={GeneratedProjectsRef}>
