@@ -75,9 +75,9 @@ const SigninButton = () => {
     }
     if (status === 'authenticated') {
         return (
-            <div className="flex items-center gap-4 ml-auto">
+            <div className="flex items-center ml-auto">
                 <ToastContainer />
-                <button className="border border-transparent py-1 px-2 transition duration-300 hover:border-green-500" onClick={openModal}>🔥 {tokens.tokenCount}</button>
+                <button className="border border-transparent transition duration-300 hover:border-green-500" onClick={openModal}>🔥 {tokens.tokenCount}</button>
 
                 <div>
                     <Modal isOpen={isModalOpen} onClose={closeModal}>

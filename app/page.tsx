@@ -53,10 +53,10 @@ export default function Home() {
     return (
         <>
             <section className='body-font min-h-screen w-full'>
-                <div className='flex items-center flex-wrap justify-around pt-36 pb-16'>
-                    <div className="md:w-[45%]">
-                        <h1 className="text-4xl md:text-6xl font-bold leading-tight">
-                            Discover Your <span className="text-blue-600">Dream Project</span>
+                <div className='flex items-center flex-wrap md:justify-around justify-center pt-36 pb-16'>
+                    <div className="md:w-[45%] flex md:block flex-col items-center text-center">
+                        <h1 className="text-4xl md:text-6xl font-bold leading-tight flex flex-col md:flex-row">
+                            <span>Discover Your</span> <span className="text-blue-600">Dream Project</span>
                         </h1>
                         <p className="text-xl md:text-2xl text-gray-400 mt-4">
                             ProjectPlanner helps you find unique project ideas based on your selected technologies. Never run out of ideas again!
