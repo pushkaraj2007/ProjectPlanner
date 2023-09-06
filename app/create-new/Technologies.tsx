@@ -33,7 +33,7 @@ const Technologies = ({ projectName }: InputFieldProps) => {
     async function runFetch() {
         setLoading(true); // Set loading to true when fetch is initiated
         try {
-            const response = await fetch('/api/generate-ideasya', {
+            const response = await fetch('/api/generate-ideas', {
                 method: "post",
                 body: JSON.stringify(projectIdeasOptions),
                 headers: {
