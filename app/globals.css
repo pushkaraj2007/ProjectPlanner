@@ -4,6 +4,10 @@
 
 /* CSS transitions */
 
+body{
+    overflow-x: hidden;
+}
+
 .lds-spinner {
     color: official;
     display: inline-block;
