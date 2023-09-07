@@ -75,9 +75,9 @@ const SigninButton = () => {
     }
     if (status === 'authenticated') {
         return (
-            <div className="flex items-center ml-auto">
+            <div className="flex items-center gap-4 ml-auto">
                 <ToastContainer />
-                <button className="border border-transparent transition duration-300 hover:border-green-500" onClick={openModal}>🔥 {tokens.tokenCount}</button>
+                <button className="border border-transparent py-1 px-2 transition duration-300 hover:border-green-500" onClick={openModal}>🔥 {tokens.tokenCount}</button>
 
                 <div>
                     <Modal isOpen={isModalOpen} onClose={closeModal}>
@@ -121,7 +121,7 @@ const SigninButton = () => {
             onClick={() => signIn('google', {
                 callbackUrl: `https://projectplanner.vercel.app/api/user-signin`
             })}
-            className="bg-blue-700 text-white flex items-center px-4 py-3 mt-6 md:mt-8 text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transform hover:scale-95 transition duration-300"
+            className="bg-blue-700 text-white flex items-center px-4 py-3 text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transform hover:scale-95 transition duration-300"
         >
             Login / Signup
         </button>
