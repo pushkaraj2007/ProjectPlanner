@@ -10,7 +10,7 @@ const Header: NextPage = () => {
                 <div className='flex flex-row items-center'>
                         <Link className='cursor-pointer' href='/'>
                             <div className='flex items-center font-medium text-gray-900 title-font logoDiv'>
-                                <span className='ml-3 text-2xl font-bold text-blue-600'>ProjectPlanner</span>
+                                <span className='ml-3 text-xl font-bold text-blue-600'>ProjectPlanner</span>
                             </div>
                         </Link>
                 </div>
