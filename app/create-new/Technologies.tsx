@@ -77,7 +77,7 @@ const Technologies = ({ projectName }: InputFieldProps) => {
             >
                 <h2 className="text-2xl font-bold mb-4">Build Your App</h2>
 
-                <div className="mb-6">
+                <div className="mb-6 p-3">
                     <label htmlFor="app-type" className="block mb-2 font-medium">
                         Which type of app do you want to build?
                     </label>
