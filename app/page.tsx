@@ -10,6 +10,7 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { signIn, useSession } from 'next-auth/react';
 import { redirect } from 'next/navigation';
+import router from 'next/router';
 
 export default function Home() {
 
@@ -55,7 +56,7 @@ export default function Home() {
         }
     };
     return (
-        <div className="overflow-x-hidden md:overflow-x-visible" onClick={()=> console.log(status)}>
+        <div className="overflow-x-hidden md:overflow-x-visible" onClick={() => console.log(status)}>
             <section className='body-font min-h-screen w-full'>
                 <div className='flex items-center flex-wrap md:justify-around justify-center pt-36 pb-16'>
                     <div className="md:w-[45%] flex md:block flex-col items-center text-center md:text-left">
@@ -65,9 +66,18 @@ export default function Home() {
                         <p className="text-xl md:text-2xl text-gray-400 mt-4">
                             ProjectPlanner helps you find unique project ideas based on your selected technologies. Never run out of ideas again!
                         </p>
-                        <button className="bg-blue-700 hover:bg-blue-600 text-white flex items-center px-6 py-4 mt-6 md:mt-8 text-xl font-semibold rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition duration-300" onClick={() => { status === 'authenticated' ? redirect('/dashboard') : signIn('google', {
-                            callbackUrl: `https://projectplanner.vercel.app/api/user-signin`
-                        })}}>
+                        <button
+                            className="bg-blue-700 hover:bg-blue-600 text-white flex items-center px-6 py-4 mt-6 md:mt-8 text-xl font-semibold rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition duration-300"
+                            onClick={() => {
+                                if (status === 'authenticated') {
+                                    router.push('/dashboard');
+                                } else {
+                                    signIn('google', {
+                                        callbackUrl: `https://projectplanner.vercel.app/api/user-signin`
+                                    });
+                                }
+                            }}
+                        >
                             Get Started <FiArrowRight className="ml-2" />
                         </button>
                     </div>
