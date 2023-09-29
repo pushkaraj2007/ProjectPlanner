@@ -84,7 +84,7 @@ export default function Home() {
             <section className="py-16">
                 <div className="container mx-auto text-center">
                     <h2 className="text-3xl font-semibold mb-6">Discover the Power of ProjectPlanner</h2>
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 p-3 md:p-0">
                         {/* User Friendly Interface */}
                         <div className="flex flex-col items-center bg-white rounded-lg shadow-md p-4" data-aos="fade-right">
                             <div className="bg-blue-500 text-white rounded-full p-4">
@@ -145,7 +145,7 @@ export default function Home() {
             <section className="py-16 bg-gray-100">
                 <div className="container mx-auto text-center">
                     <h2 className="text-3xl font-semibold mb-6">Frequently Asked Questions</h2>
-                    <div className="flex flex-col items-center space-y-4">
+                    <div className="flex flex-col items-center space-y-4  p-3 md:p-0">
                         {faqData.map((item, index) => (
                             <div
                                 key={index}
