@@ -71,13 +71,13 @@ const Technologies = ({ projectName }: InputFieldProps) => {
     return (
         <>
             <div
-                className={`mt-[10vh] transition-opacity transform duration-500 ${isShown ? 'opacity-100' : 'opacity-0'
+                className={`mt-[10vh] transition-opacity  p-3 md:p-0 transform duration-500 ${isShown ? 'opacity-100' : 'opacity-0'
                     }`}
                 ref={technologiesSectionRef}
             >
                 <h2 className="text-2xl font-bold mb-4">Build Your App</h2>
 
-                <div className="mb-6 p-3">
+                <div className="mb-6">
                     <label htmlFor="app-type" className="block mb-2 font-medium">
                         Which type of app do you want to build?
                     </label>
