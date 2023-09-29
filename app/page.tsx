@@ -55,7 +55,7 @@ export default function Home() {
         }
     };
     return (
-        <div className="overflow-x-hidden md:overflow-x-visible">
+        <div className="overflow-x-hidden md:overflow-x-visible" onClick={()=> console.log(status)}>
             <section className='body-font min-h-screen w-full'>
                 <div className='flex items-center flex-wrap md:justify-around justify-center pt-36 pb-16'>
                     <div className="md:w-[45%] flex md:block flex-col items-center text-center md:text-left">
