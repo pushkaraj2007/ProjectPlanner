@@ -2,6 +2,8 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## ProjectPlanner
 
+Easily create your project ideas using AI
+
 First, run the development server:
 
 ```bash
