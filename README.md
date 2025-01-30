@@ -2,7 +2,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## ProjectPlanner
 
-Easily create your project ideas using AI
+ProjectPlanner helps you create unique project ideas based on tech stack and project complexity using AI.
 
 First, run the development server:
 
