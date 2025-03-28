@@ -94,7 +94,7 @@ const SigninButton = () => {
                             <button className="bg-blue-500 text-white py-2 px-4 rounded-r-md hover:bg-blue-600 transition duration-300 focus:ring-2 focus:ring-blue-400" onClick={applyCoupon} disabled={isLoading}>{isLoading ? "Checking validity..." : "Apply ✅"}</button>
                         </div>
                         <p>Use <span className="font-bold">welcomeBonus</span> coupon to get 5 more tokens.</p>
-                        <p>If you don't have the code you can contact me on <a className="underline" href="https://twitter.com/pushkaraj2007">X (Twitter)</a></p>
+                        <p>If you don't have the code you can contact me on <a className="underline" href="https://x.com/thepushkaraj">X (Twitter)</a></p>
                         <p>or at <a className="underline" href="mailto:contactpushkaraj@gmail.com">conatcpushkaraj@gmail.com</a> and I'll help you to get one</p>
                     </Modal>
                 </div>
